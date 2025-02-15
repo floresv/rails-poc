@@ -35,6 +35,7 @@ gem 'sprockets-rails', '~> 3.5', '>= 3.5.2'
 gem 'strong_migrations', '~> 2.1'
 gem 'yaaf', '~> 3.0'
 gem 'active_model_serializers', '~> 0.10.13'
+gem 'kaminari'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -85,6 +86,7 @@ group :test do
   gem 'shoulda-matchers', '~> 6.3'
   gem 'simplecov', '~> 0.22.0', require: false
   gem 'webmock', '~> 3.24'
+  gem 'database_cleaner-active_record', '2.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

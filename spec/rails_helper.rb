@@ -15,7 +15,7 @@ SimpleCov.start 'rails' do
 end
 
 require File.expand_path('../config/environment', __dir__)
-# Prevent database truncation if the environment is production
+# Prevent database truncation if the environment is running in production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 return unless Rails.env.test?
 
@@ -24,6 +24,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'rspec/retry'
 require 'support/retry/message_formatter'
+require 'database_cleaner-active_record'
 
 ActiveRecord::Migration.maintain_test_schema!
 WebMock.disable_net_connect!(
