@@ -61,6 +61,10 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def admin?
+    false
+  end
+
   private
 
   def init_uid
