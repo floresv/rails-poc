@@ -9,6 +9,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_HOST: db
       BINDING: 0.0.0.0
+      RAILS_ENV: production
+      SECRET_KEY_BASE: 1234567890
     tty: true
     stdin_open: true
     volumes:
