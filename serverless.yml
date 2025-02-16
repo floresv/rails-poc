@@ -1,0 +1,26 @@
+service: rails-api
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  profile: rails-poc
+  region: us-east-1
+  runtime: provided.al2
+  # Specify environment variables available to Lambda (for example, to force Puma to run on port 8080)
+  environment:
+    PORT: "8080"
+  ecr:
+    images:
+      railsApi:
+        # Use the current directory as the Docker build context (make sure your Dockerfile is here)
+        path: .
+
+functions:
+  api:
+    image:
+      name: railsApi
+    events:
+      - httpApi:
+          path: "/{proxy+}"
+          method: ANY 

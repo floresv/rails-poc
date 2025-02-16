@@ -5,7 +5,7 @@ class API::V1::MealsController < API::V1::APIController
     @meals = policy_scope(Meal)
     @meals = @meals.where(category_id: params[:category_id]) if params[:category_id].present?
     @meals = @meals.order(:price)
-    @meals = @meals.page(params[:page]).per(params[:per_page] || 10)
+    @meals = @meals.page(params[:page]).per(params[:per_page] || 9)
     
     render json: @meals, 
            each_serializer: ::MealSerializer,
