@@ -6,7 +6,6 @@ Rails.application.configure do
   config.lograge.custom_payload do |controller|
     request = controller.request
     {
-      current_user_id: controller.current_user&.id,
       host: request.host,
       path: request.path,
       query_string: request.query_string,
