@@ -1,0 +1,13 @@
+version: '3'
+services:
+  deploy:
+    build:
+      context: .
+      dockerfile: Dockerfile.deploy
+    volumes:
+      - ./:/app
+    ports:
+      - "3010:3000"
+    command: tail -f /dev/null
+    tty: true
+    stdin_open: true
