@@ -4,7 +4,7 @@ class API::V1::MealsController < API::V1::APIController
   def index
     @meals = policy_scope(Meal)
     @meals = @meals.where(category_id: params[:category_id]) if params[:category_id].present?
-    @meals = @meals.order(:price)
+    @meals = @meals.order(:price_cents)
     @meals = @meals.page(params[:page]).per(params[:per_page] || 9)
     
     render json: @meals, 
@@ -25,6 +25,8 @@ class API::V1::MealsController < API::V1::APIController
       render json: { error: "Meal not found" }, status: :not_found
     end
   end
+
+  private
 
   def pundit_user
     GuestUser.new

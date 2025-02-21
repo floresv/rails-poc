@@ -6,7 +6,7 @@ ActiveAdmin.setup do |config|
   # Set the title that is displayed on the main layout
   # for each of the active admin pages.
   #
-  config.site_title = 'rails_api_base Admin'
+  config.site_title = 'FoodAPI Admin'
 
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
@@ -235,6 +235,8 @@ ActiveAdmin.setup do |config|
     admin.build_menu :default do |menu|
       menu.add label: 'Feature Flags',
                url: '/admin/feature-flags', html_options: { target: :blank }
+      menu.add label: 'Meals',
+              url: '/admin/meals', html_options: { target: :blank }
     end
   end
 

@@ -22,6 +22,8 @@ class API::V1::CategoriesController < API::V1::APIController
     end
   end
 
+  private
+
   def pundit_user
     GuestUser.new
   end

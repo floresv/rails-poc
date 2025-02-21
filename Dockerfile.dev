@@ -41,6 +41,8 @@ COPY --link . .
 
 RUN yarn build
 
+RUN if [ -f /src/app/tmp/pids/server.pid ]; then rm -f /src/app/tmp/pids/server.pid; fi
+
 # Entrypoint prepares the database.
 ENTRYPOINT ["./bin/docker-entrypoint"]
 

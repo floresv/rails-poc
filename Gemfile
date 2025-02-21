@@ -43,6 +43,8 @@ gem 'kaminari'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'ostruct'
+gem 'money-rails', '~> 1.15'
+gem 'aasm'
 
 group :development, :test do
   gem 'annotate', '~> 3.2', '>= 3.0.3'
@@ -51,6 +53,7 @@ group :development, :test do
   gem 'faker', '~> 3.5'
   gem 'pry-byebug', '~> 3.9', platform: :mri
   gem 'pry-rails', '~> 0.3.11'
+  gem 'rspec'
   gem 'rspec-rails', '~> 7.1'
 end
 
