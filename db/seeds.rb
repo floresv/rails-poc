@@ -46,13 +46,13 @@ begin
 
             case category.name.downcase
             when 'lamb'
-              meal.price = rand(45.00..100.00).round(2) # Lamb: $45-$100
+              meal.price_cents = rand(45.00..100.00).round(2)*100 # Lamb: $45-$100
             when 'beef'
-              meal.price = rand(35.00..80.00).round(2)  # Beef: $35-$80
+              meal.price_cents = rand(35.00..80.00).round(2)*100  # Beef: $35-$80
             when 'pork'
-              meal.price = rand(25.00..60.00).round(2)  # Pork: $25-$60
+              meal.price_cents = rand(25.00..60.00).round(2)*100  # Pork: $25-$60
             else
-              meal.price = rand(10.00..100.00).round(2) # Other: $10-$100
+              meal.price_cents = rand(10.00..100.00).round(2)*100 # Other: $10-$100
             end
   
             puts "Created/Updated meal: #{meal.name} (#{meal.price}) for category: #{category.name}"

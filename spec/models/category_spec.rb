@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id                           :bigint           not null, primary key
+#  name                         :string
+#  ext_id                       :integer
+#  ext_str_category_humb        :string
+#  ext_str_category_description :text
+#  created_at                   :datetime         not null
+#  updated_at                   :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Category, type: :model do

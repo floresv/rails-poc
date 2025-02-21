@@ -6,7 +6,6 @@ class CreateMeals < ActiveRecord::Migration[7.2]
       t.integer :ext_id_meal
       t.string :name
       t.string :image_url
-      t.decimal :price
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_02_14_234952) do
+ActiveRecord::Schema[7.2].define(version: 2025_02_20_213219) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -110,6 +110,32 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_14_234952) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents"
+    t.string "price_currency", default: "USD", null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "meal_id", null: false
+    t.integer "quantity"
+    t.decimal "unit_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "unit_price_cents"
+    t.string "unit_price_currency", default: "USD", null: false
+    t.index ["meal_id"], name: "index_order_items_on_meal_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.decimal "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "total_cents"
+    t.string "total_currency", default: "USD", null: false
+    t.string "state", default: "pending_of_payment", null: false
   end
 
   create_table "settings", force: :cascade do |t|
@@ -145,4 +171,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_14_234952) do
   end
 
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "order_items", "meals"
+  add_foreign_key "order_items", "orders"
 end

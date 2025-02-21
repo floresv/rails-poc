@@ -80,6 +80,8 @@ ENV RAILS_LOG_TO_STDOUT=true
 ENV RAILS_SERVE_STATIC_FILES=true
 ENV LD_PRELOAD=/usr/lib/libjemalloc.so.2
 
+RUN if [ -f /src/app/tmp/pids/server.pid ]; then rm /src/app/tmp/pids/server.pid; fi
+
 # Entrypoint prepares the database.
 ENTRYPOINT ["./bin/docker-entrypoint"]
 
