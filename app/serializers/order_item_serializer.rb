@@ -17,7 +17,8 @@
 #  index_order_items_on_order_id  (order_id)
 #
 class OrderItemSerializer < ActiveModel::Serializer
-  attributes :id, :quantity, :unit_price, :total_price, :meal
+  attributes :id, :quantity, :unit_price, :total_price, :meal, :unit_price_cents, :unit_price_currency
+  belongs_to :meal, serializer: MealSerializer
 
   def unit_price
     object.unit_price.format
@@ -25,13 +26,5 @@ class OrderItemSerializer < ActiveModel::Serializer
 
   def total_price
     object.total_price.format
-  end
-
-  def meal
-    {
-      id: object.meal.id,
-      name: object.meal.name,
-      price: object.meal.price.format
-    }
   end
 end 
