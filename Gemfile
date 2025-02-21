@@ -89,7 +89,7 @@ group :test do
   gem 'selenium-webdriver', '~> 4.28.0'
   gem 'shoulda-matchers', '~> 6.3'
   gem 'simplecov', '~> 0.22.0', require: false
-  gem 'webmock', '~> 3.24'
+  gem 'webmock', '~> 3.25'
   gem 'database_cleaner-active_record', '2.0.1'
 end
 
