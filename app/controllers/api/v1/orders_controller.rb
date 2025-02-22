@@ -38,16 +38,15 @@ module API
       end
 
       def destroy
-        @order = policy_scope(Order).find(params[:id])
+        @order = Order.find(params[:id])
 
-        if @order.email == params[:email]
-          @order.destroy!
-          render json: { message: 'Order successfully deleted' }, status: :ok
+        if @order.destroy
+          head :no_content
         else
-          render json: { errors: 'Email verification failed' }, status: :unauthorized
+          render json: { errors: @order.errors.full_messages }, status: :unprocessable_entity
         end
       rescue ActiveRecord::RecordNotFound
-        render json: { errors: 'Order not found' }, status: :not_found
+        render_not_found
       end
 
       def pay

@@ -31,6 +31,7 @@ class Order < ApplicationRecord
   monetize :total_cents, as: 'total'
 
   before_save :calculate_total!
+  before_destroy :ensure_can_be_deleted
 
   aasm column: :state do
     state :pending_of_payment, initial: true
@@ -49,6 +50,9 @@ class Order < ApplicationRecord
     return false unless can_be_paid?
 
     pay! # This will trigger the state transition to 'paid'
+  rescue AASM::InvalidTransition => e
+    errors.add(:base, e.message)
+    raise e
   end
 
   private
@@ -65,5 +69,12 @@ class Order < ApplicationRecord
     end
 
     true
+  end
+
+  def ensure_can_be_deleted
+    return true if state == 'pending_of_payment'
+
+    errors.add(:base, 'Cannot delete a paid order')
+    throw(:abort)
   end
 end
