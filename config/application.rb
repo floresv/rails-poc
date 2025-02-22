@@ -17,8 +17,8 @@ module App
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
-    config.autoload_paths += %W(#{config.root}/app/serializers)
-    config.autoload_paths += %W(#{config.root}/app/services)
+    config.autoload_paths += %W[#{config.root}/app/serializers]
+    config.autoload_paths += %W[#{config.root}/app/services]
 
     # Configuration for the application, engines, and railties goes here.
     #

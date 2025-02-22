@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: categories
@@ -11,10 +13,13 @@
 #  updated_at                   :datetime         not null
 #
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Category, type: :model do
+RSpec.describe Category do
   describe 'validations' do
-    it { should validate_presence_of(:name) }
+    subject { build(:category) }
+
+    it { is_expected.to validate_presence_of(:name) }
   end
 
   describe 'attributes' do
@@ -26,7 +31,7 @@ RSpec.describe Category, type: :model do
         ext_str_category_humb
         ext_str_category_description
       ]
-      
+
       expect(described_class.new.attributes.keys).to include(*attributes.map(&:to_s))
     end
   end

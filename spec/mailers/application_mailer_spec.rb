@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require 'rails_helper'
+require 'spec_helper'
+
 module MockMailer
   class UserMailer < ApplicationMailer
     def test_email; end

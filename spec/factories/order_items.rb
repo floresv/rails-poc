@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: order_items
@@ -21,6 +23,10 @@ FactoryBot.define do
     order { nil }
     meal { nil }
     quantity { 1 }
-    unit_price { "9.99" }
+    unit_price { '9.99' }
+  end
+
+  factory :order_item_with_meal, parent: :order_item do
+    meal
   end
 end

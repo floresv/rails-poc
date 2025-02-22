@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: meals
@@ -15,11 +17,15 @@
 #  price_currency     :string           default("USD"), not null
 #
 require 'rails_helper'
+require 'spec_helper'
 
-RSpec.describe Meal, type: :model do
+RSpec.describe Meal do
+  let(:category) { create(:category) }
+  let(:meal) { build(:meal, category: category, price: nil) }
+
   describe 'validations' do
     it 'is valid with valid attributes' do
-      meal = build(:meal)
+      meal.price = 1500
       expect(meal).to be_valid
     end
 
@@ -29,13 +35,14 @@ RSpec.describe Meal, type: :model do
     end
 
     it 'is not valid without a price' do
-      meal = build(:meal, price: nil)
+      meal.price_cents = nil
       expect(meal).not_to be_valid
+      expect(meal.errors[:price_cents]).to include("can't be blank")
     end
   end
 
   describe 'associations' do
-    it { should belong_to(:category) }
+    it { is_expected.to belong_to(:category) }
   end
 
   describe 'attributes' do

@@ -236,7 +236,7 @@ ActiveAdmin.setup do |config|
       menu.add label: 'Feature Flags',
                url: '/admin/feature-flags', html_options: { target: :blank }
       menu.add label: 'Meals',
-              url: '/admin/meals', html_options: { target: :blank }
+               url: '/admin/meals', html_options: { target: :blank }
     end
   end
 

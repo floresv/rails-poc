@@ -1,17 +1,18 @@
 # encoding : utf-8
+# frozen_string_literal: true
 
 MoneyRails.configure do |config|
-
   # To set the default currency
   config.default_currency = :usd
+  config.locale_backend = :i18n
 
   # Set default bank object
   config.default_bank = Money::Bank::VariableExchange.new
 
   # Add exchange rates to current money bank object.
   # (The conversion rate refers to one direction only)
-  config.add_rate "USD", "EUR", 0.85
-  config.add_rate "EUR", "USD", 1.18
+  config.add_rate 'USD', 'EUR', 0.85
+  config.add_rate 'EUR', 'USD', 1.18
 
   # To handle the inclusion of validations for monetized fields
   # The default value is true
