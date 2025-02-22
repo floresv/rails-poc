@@ -79,4 +79,31 @@ RSpec.describe Order do
       expect(order.total_cents).to eq(3000)
     end
   end
+
+  describe '#destroy' do
+    context 'when order is pending payment' do
+      let(:order) { create(:order) }
+
+      it 'allows deletion' do
+        expect(order.destroy).to be_truthy
+      end
+    end
+
+    context 'when order is paid' do
+      let(:order) { create(:order) }
+
+      before do
+        create(:payment, order: order)
+        order.mark_as_paid
+      end
+
+      it 'prevents deletion' do
+        expect(order.destroy).to be_falsey
+      end
+
+      it 'raises an error when using destroy!' do
+        expect { order.destroy! }.to raise_error(ActiveRecord::RecordNotDestroyed)
+      end
+    end
+  end
 end
