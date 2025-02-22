@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1, defaults: { format: :json } do
       get :status, to: 'health#status'
-      resources :categories, only: [:index, :show]
-      resources :meals, only: [:index,:show]
-      resources :orders, only: [:index, :show, :create, :destroy] do
+      resources :categories, only: %i[index show]
+      resources :meals, only: %i[index show]
+      resources :orders, only: %i[index show create destroy] do
         member do
           post :pay
         end

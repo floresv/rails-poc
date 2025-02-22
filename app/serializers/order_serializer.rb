@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: orders
@@ -12,7 +14,7 @@
 #  state          :string           default("pending_of_payment"), not null
 #
 class OrderSerializer < ActiveModel::Serializer
-  attributes :id, :username, :email, :total, :created_at, :updated_at, :total_cents, :total_currency
+  attributes :id, :username, :email, :total, :created_at, :updated_at, :total_cents, :total_currency, :state
   has_many :order_items
 
   def total

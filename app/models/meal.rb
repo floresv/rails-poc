@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: meals
@@ -16,10 +18,12 @@
 #
 class Meal < ApplicationRecord
   belongs_to :category
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
 
   validates :name, presence: true
-  
-  monetize :price_cents, as: "price"
+  validates :price_cents, presence: true
+  validates :price_currency, presence: true
+
+  monetize :price_cents, as: 'price'
 end

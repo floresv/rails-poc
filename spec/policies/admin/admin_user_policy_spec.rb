@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 describe Admin::AdminUserPolicy do
   subject { described_class }
 

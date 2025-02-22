@@ -8,6 +8,7 @@ gem 'rails', '~> 7.2.2'
 
 # Gems
 gem 'activeadmin', '~> 3.2'
+gem 'active_model_serializers', '~> 0.10.13'
 gem 'active_storage_base64', '~> 3.0.0'
 gem 'aws-sdk-s3', '~> 1.179', require: false
 gem 'bootsnap', '~> 1.18'
@@ -21,6 +22,7 @@ gem 'flipper-active_record', '~> 1.3.2'
 gem 'flipper-ui', '~> 1.3.2'
 gem 'jbuilder', '~> 2.13'
 gem 'jsbundling-rails', '~> 1.3'
+gem 'kaminari'
 gem 'lograge', '~> 0.14'
 gem 'newrelic_rpm', '~> 9.17'
 gem 'pagy', '~> 9.3'
@@ -34,17 +36,15 @@ gem 'sendgrid', '~> 1.2.4'
 gem 'sprockets-rails', '~> 3.5', '>= 3.5.2'
 gem 'strong_migrations', '~> 2.1'
 gem 'yaaf', '~> 3.0'
-gem 'active_model_serializers', '~> 0.10.13'
-gem 'kaminari'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-gem 'ostruct'
-gem 'money-rails', '~> 1.15'
 gem 'aasm'
+gem 'money-rails', '~> 1.15'
+gem 'ostruct'
 
 group :development, :test do
   gem 'annotate', '~> 3.2', '>= 3.0.3'
@@ -78,19 +78,20 @@ end
 
 group :test do
   gem 'capybara', '~> 3.40'
+  gem 'database_cleaner-active_record', '2.0.1'
   gem 'faraday-retry', '~> 2.2'
   gem 'knapsack', '~> 4.0'
   gem 'octokit', '~> 9.2'
   gem 'parallel_tests', '~> 4.9'
   gem 'pg_query', '~> 6.0.0'
   gem 'prosopite', '~> 1.4.2'
+  gem 'rails-controller-testing'
   gem 'rspec-openapi', '~> 0.18'
   gem 'rspec-retry', github: 'rootstrap/rspec-retry', branch: 'add-intermittent-callback'
   gem 'selenium-webdriver', '~> 4.28.0'
   gem 'shoulda-matchers', '~> 6.3'
   gem 'simplecov', '~> 0.22.0', require: false
   gem 'webmock', '~> 3.24'
-  gem 'database_cleaner-active_record', '2.0.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

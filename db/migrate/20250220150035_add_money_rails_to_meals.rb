@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMoneyRailsToMeals < ActiveRecord::Migration[7.2]
   def change
     add_column :meals, :price_cents, :integer

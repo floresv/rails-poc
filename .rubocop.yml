@@ -21,6 +21,7 @@ AllCops:
     - bin/yarn
     - config/initializers/pagy.rb
     - config/initializers/strong_migrations.rb
+    - db/migrate/**/*
     - db/schema.rb
     - node_modules/**/*
 

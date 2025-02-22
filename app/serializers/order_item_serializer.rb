@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: order_items
@@ -27,4 +29,4 @@ class OrderItemSerializer < ActiveModel::Serializer
   def total_price
     object.total_price.format
   end
-end 
+end

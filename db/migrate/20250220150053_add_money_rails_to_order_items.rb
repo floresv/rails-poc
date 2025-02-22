@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddMoneyRailsToOrderItems < ActiveRecord::Migration[7.2]
   def change
     add_column :order_items, :unit_price_cents, :integer

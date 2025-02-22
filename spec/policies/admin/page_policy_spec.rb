@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'spec_helper'
+
 describe Admin::PagePolicy do
   subject { described_class }
 
