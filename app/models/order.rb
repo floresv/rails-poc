@@ -96,4 +96,11 @@ class Order < ApplicationRecord
 
     true
   end
+
+  def ensure_can_be_deleted
+    return true if state == 'pending_of_payment'
+
+    errors.add(:base, 'Cannot delete a paid order')
+    throw(:abort)
+  end
 end
