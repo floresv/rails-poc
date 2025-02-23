@@ -23,6 +23,23 @@ class Payment < ApplicationRecord
   validates :card_number, presence: true, if: :card_payment?
   validates :full_name, presence: true
 
+  RANSACK_ATTRIBUTES = %w[
+    id
+    order_id
+    payment_type
+    full_name
+    created_at
+    updated_at
+  ].freeze
+
+  def self.ransackable_attributes(_auth_object = nil)
+    RANSACK_ATTRIBUTES
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[order]
+  end
+
   private
 
   def card_payment?

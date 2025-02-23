@@ -1,21 +1,30 @@
 # Rails PoC - FoodAPI
 
-This API provides a comprehensive interface for managing food-related data, specifically focused on meal categories and individual meals. It serves as a backend system for applications requiring structured food information management.
-
-Key objectives:
-- Provide CRUD operations for meal categories and individual meals
-- Deliver structured meal data in a consistent JSON format
-
-Built with Ruby on Rails, this API implements RESTful principles and includes thorough documentation of all endpoints.
-
-API_URL=https://rails-poc-k1uu.onrender.com/api/v1
+This API provides a comprehensive interface for managing food-related data, including meal categories, individual meals, orders and payments. It serves as a backend system for applications requiring structured food information management and order processing. Built with Ruby on Rails, this API implements RESTful principles and includes thorough documentation of all endpoints.
 
 ## Features
 
-This template comes with:
-- Categories
-- Meals
+Key features:
+- RESTful API endpoints for managing meals and categories
+- Order creation and payment processing
+- Wishlist management endpoints for saving favorite items
+- Admin interface for managing all resources
+- User authentication and authorization
+- Pagination and filtering support
+- Comprehensive error handling
+- API documentation
 
+API_URL=https://rails-poc-k1uu.onrender.com/api/v1
+
+Admin API docs:
+https://rails-poc-k1uu.onrender.com/api-docs
+username: apifood
+password: password
+
+ActiveAdmin:
+https://rails-poc-k1uu.onrender.com/admin
+username: admin@example.com
+password: password
 
 ## How to use with Docker
 
