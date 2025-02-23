@@ -33,6 +33,25 @@ class Order < ApplicationRecord
   before_save :calculate_total!
   before_destroy :ensure_can_be_deleted
 
+  RANSACK_ATTRIBUTES = %w[
+    id
+    username
+    email
+    total_cents
+    total_currency
+    state
+    created_at
+    updated_at
+  ].freeze
+
+  def self.ransackable_attributes(_auth_object = nil)
+    RANSACK_ATTRIBUTES
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[order_items meals payment]
+  end
+
   aasm column: :state do
     state :pending_of_payment, initial: true
     state :paid
@@ -40,10 +59,6 @@ class Order < ApplicationRecord
     event :pay do
       transitions from: :pending_of_payment, to: :paid
     end
-  end
-
-  def calculate_total!
-    self.total_cents = order_items.sum(&:total_price_cents)
   end
 
   def mark_as_paid
@@ -55,26 +70,30 @@ class Order < ApplicationRecord
     raise e
   end
 
-  private
-
-  def can_be_paid?
-    if payment.nil?
-      errors.add(:base, 'Payment information is required')
-      return false
-    end
-
-    unless payment.persisted?
-      errors.add(:base, 'Invalid payment information')
-      return false
-    end
-
-    true
+  def calculate_total!
+    self.total_cents = order_items.sum(&:total_price_cents)
   end
+
+  private
 
   def ensure_can_be_deleted
     return true if state == 'pending_of_payment'
 
-    errors.add(:base, 'Cannot delete a paid order')
+    errors.add(:base, I18n.t('activerecord.errors.models.order.attributes.base.cannot_delete_paid'))
     throw(:abort)
+  end
+
+  def can_be_paid?
+    if payment.nil?
+      errors.add(:base, I18n.t('activerecord.errors.models.order.attributes.base.payment_required'))
+      return false
+    end
+
+    unless payment.persisted?
+      errors.add(:base, I18n.t('activerecord.errors.models.order.attributes.base.invalid_payment'))
+      return false
+    end
+
+    true
   end
 end

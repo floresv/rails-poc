@@ -4,7 +4,19 @@ en:
     dashboard: Main page
     dashboard_welcome:
       call_to_action: Actions
-      welcome: Welcome to your first admin
+      welcome: Food Delivery Admin
+    orders:
+      mark_as_paid:
+        success: "Order was successfully marked as paid."
+      panels:
+        order_items: "Order Items"
+        payment_info: "Payment Information"
+      blank_slate:
+        no_payment: "No Payment Information"
+      details: "Order Details"
+      items: "Order Items"
+    actions:
+      mark_as_paid: "Mark as Paid"
   money:
     format:
       delimiter: ","
@@ -16,3 +28,19 @@ en:
       invalid_content_type: Invalid content type header
       missing_param: A required param is missing
       not_found: Couldn't find the record
+    orders:
+      not_found: "Order not found"
+      email_verification_failed: "Email verification failed"
+      delete_success: "Order successfully deleted"
+      payment_success: "Order successfully paid"
+      already_paid: "Order is already paid."
+
+  activerecord:
+    errors:
+      models:
+        order:
+          attributes:
+            base:
+              cannot_delete_paid: "Cannot delete a paid order"
+              payment_required: "Payment information is required"
+              invalid_payment: "Invalid payment information"

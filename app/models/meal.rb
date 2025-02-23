@@ -20,10 +20,32 @@ class Meal < ApplicationRecord
   belongs_to :category
   has_many :order_items, dependent: :destroy
   has_many :orders, through: :order_items
+  has_many :wishlists, as: :wishlistable, dependent: :destroy
 
   validates :name, presence: true
   validates :price_cents, presence: true
   validates :price_currency, presence: true
 
   monetize :price_cents, as: 'price'
+
+  RANSACK_ATTRIBUTES = %w[
+    id
+    category_id
+    name
+    price_cents
+    price_currency
+    ext_str_meal_thumb
+    ext_id_meal
+    image_url
+    created_at
+    updated_at
+  ].freeze
+
+  def self.ransackable_attributes(_auth_object = nil)
+    RANSACK_ATTRIBUTES
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[category order_items orders]
+  end
 end

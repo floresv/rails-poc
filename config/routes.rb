@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       get :status, to: 'health#status'
       resources :categories, only: %i[index show]
       resources :meals, only: %i[index show]
+      resources :wishlists, only: %i[index create destroy]
       resources :orders, only: %i[index show create destroy] do
         member do
           post :pay

@@ -15,7 +15,7 @@ module API
         @order = policy_scope(Order).includes(order_items: :meal).find(params[:id])
         render json: @order, status: :ok
       rescue ActiveRecord::RecordNotFound
-        render json: { errors: 'Order not found' }, status: :not_found
+        render json: { errors: I18n.t('api.orders.not_found') }, status: :not_found
       end
 
       def create
@@ -116,7 +116,7 @@ module API
       end
 
       def render_payment_success
-        render json: { message: 'Order successfully paid' }, status: :ok
+        render json: { message: I18n.t('api.orders.payment_success') }, status: :ok
       end
 
       def render_payment_errors
@@ -125,11 +125,11 @@ module API
       end
 
       def render_not_found
-        render json: { errors: 'Order not found' }, status: :not_found
+        render json: { errors: I18n.t('api.orders.not_found') }, status: :not_found
       end
 
       def render_already_paid
-        render json: { errors: 'Order is already paid.' }, status: :unprocessable_entity
+        render json: { errors: I18n.t('api.orders.already_paid') }, status: :unprocessable_entity
       end
 
       def pundit_user
