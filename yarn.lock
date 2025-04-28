@@ -1184,7 +1184,7 @@ __metadata:
     jquery: "npm:3.7.1"
     jquery-ui: "npm:1.14.1"
     jquery-ujs: "npm:1.2.3"
-    sass: "npm:^1.84.0"
+    sass: "npm:^1.87.0"
   languageName: unknown
   linkType: soft
 
@@ -1209,9 +1209,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.84.0":
-  version: 1.84.0
-  resolution: "sass@npm:1.84.0"
+"sass@npm:^1.87.0":
+  version: 1.87.0
+  resolution: "sass@npm:1.87.0"
   dependencies:
     "@parcel/watcher": "npm:^2.4.1"
     chokidar: "npm:^4.0.0"
@@ -1222,7 +1222,7 @@ __metadata:
       optional: true
   bin:
     sass: sass.js
-  checksum: 10c0/4af28c12416b6f1fec2423677cfa8c48af7fb7652a50bd076e0cdd1ea260f0330948ddd6075368a734b8d6cfa16c9af5518292181334f47a9471cb542599bc7b
+  checksum: 10c0/bd245faf14e4783dc547765350cf05817edaac0d6d6f6e4da8ab751f3eb3cc3873afd563c0ce416a24aa6c9c4e9023b05096447fc006660a01f76adffb54fbc6
   languageName: node
   linkType: hard
 
